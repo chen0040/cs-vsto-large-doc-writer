@@ -44,24 +44,24 @@ namespace LargeDocWriter
             mCurrentSection = null;
         }
 
-        public void AppendFigure(string filename, string caption, string tag, int width, int height)
+        public void AppendFigure(string filename, string caption,int width, int height)
         {
             ReportFigure figure = new ReportFigure(mCurrentSection);
             figure.FileName = filename;
             figure.Caption = caption;
-            figure.Tag = tag;
+            figure.Tag = caption;
             figure.Width = width;
             figure.Height = height;
             mCurrentSection.AddFigure(figure);
         }
 
-        public void AppendPieChart(Dictionary<string, float> table, string figure_caption, string figure_title, string figure_tag, int chart_width, int chart_height, string figure_filename)
+        public void AppendPieChart(Dictionary<string, float> table, string figure_caption, int chart_width, int chart_height)
         {
             ReportFigure_PieChart chart = new ReportFigure_PieChart(mCurrentSection);
             chart.Caption = figure_caption;
-            chart.Title = figure_title;
-            chart.Tag = figure_tag;
-            chart.FileName = figure_filename;
+            chart.Title = figure_caption;
+            chart.Tag = figure_caption;
+            chart.FileName = figure_caption + ".png";
 
             chart.Width = chart_width;
             chart.Height = chart_height;
@@ -71,32 +71,32 @@ namespace LargeDocWriter
             mCurrentSection.AddFigure(chart);
         }
 
-        public void AppendColumnChart(Dictionary<string, float> table, string x_label, string y_label, string figure_caption, string figure_title, string figure_tag, int chart_width, int chart_height, string figure_filename)
+        public void AppendColumnChart(Dictionary<string, float> table, string figure_caption, int chart_width, int chart_height)
         {
             ReportFigure_ColumnChart chart = new ReportFigure_ColumnChart(mCurrentSection);
             chart.Caption = figure_caption;
-            chart.Title = figure_title;
-            chart.Tag = figure_tag;
-            chart.FileName = figure_filename;
+            chart.Title = figure_caption;
+            chart.Tag = figure_caption;
+            chart.FileName = figure_caption + ".png";
 
             chart.Width = chart_width;
             chart.Height = chart_height;
 
-            chart.XLabel = x_label;
-            chart.YLabel = y_label;
+            chart.XLabel = "X Label";
+            chart.YLabel = "Y Label";
 
             chart.Content = table;
 
             mCurrentSection.AddFigure(chart);
         }
 
-        public void AppendBarChart(Dictionary<string, float> table, string figure_caption, string figure_title, string figure_tag, int chart_width, int chart_height, string figure_filename)
+        public void AppendBarChart(Dictionary<string, float> table, string figure_caption, int chart_width, int chart_height)
         {
             ReportFigure_BarChart chart = new ReportFigure_BarChart(mCurrentSection);
             chart.Caption = figure_caption;
-            chart.Title = figure_title;
-            chart.Tag = figure_tag;
-            chart.FileName = figure_filename;
+            chart.Title = figure_caption;
+            chart.Tag = figure_caption;
+            chart.FileName = figure_caption + ".png";
 
             chart.Width = chart_width;
             chart.Height = chart_height;
@@ -138,7 +138,7 @@ namespace LargeDocWriter
             mCurrentSection.AddTable(table);
         }
 
-        public void AppendTable(DataTable db_table, string table_caption, string tag)
+        public void AppendTable(DataTable db_table, string table_caption)
         {
             ReportTable table = new ReportTable(mCurrentSection);
 
@@ -152,7 +152,7 @@ namespace LargeDocWriter
 
             table.Caption = table_caption;
             table.Headers = headers;
-            table.Tag = tag;
+            table.Tag = table_caption;
             table.Content = db_table;
             mCurrentSection.AddTable(table);
         }
