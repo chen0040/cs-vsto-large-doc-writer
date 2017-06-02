@@ -12,7 +12,7 @@ namespace LargeDocWriter
         protected List<ReportSection> mSections = new List<ReportSection>();
         protected ReportSection mCurrentSection = null;
         protected int mFigureCounter = 0;
-        protected string mLeftHeaderContent = "Ministry of Labor - Kingdom of Saudi Arabia";
+        protected string mLeftHeaderContent = "";
         protected string mLeftHeaderImagePath = null;
 
         public string LeftHeaderContent

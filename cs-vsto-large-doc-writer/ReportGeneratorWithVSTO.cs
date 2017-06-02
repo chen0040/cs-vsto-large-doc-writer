@@ -124,7 +124,7 @@ namespace LargeDocWriter
             
         }
 
-        protected void GenerateCrossReferences(Word.Application myApp, Word.Document myDoc)
+        private void GenerateCrossReferences(Word.Application myApp, Word.Document myDoc)
         {
             List<string> parts;
             List<int> part_types;
@@ -220,7 +220,7 @@ namespace LargeDocWriter
             NotifyTaskProgressChanged("Cross Reference Completed", 0);
         }
 
-        protected void GenerateSection(Word.Application myApp, Word.Document myDoc, ref object missing, ReportSection section)
+        private void GenerateSection(Word.Application myApp, Word.Document myDoc, ref object missing, ReportSection section)
         {
 
             NotifyMessage(string.Format(">> {0}", section.Header.Title));
@@ -255,7 +255,7 @@ namespace LargeDocWriter
             }
         }
 
-        protected void GenerateParagraph(Word.Application myApp, Word.Document myDoc, ref object missing, ReportParagraph p)
+        private void GenerateParagraph(Word.Application myApp, Word.Document myDoc, ref object missing, ReportParagraph p)
         {
             string p_content = p.Content;
             //p_content = Regex.Replace(p_content, @"\[Anchor\|Tag:([A-Za-z0-9\-\. ]+)\|Name:([A-Za-z0-9\-\. ]+)\]", (match) =>
@@ -269,10 +269,10 @@ namespace LargeDocWriter
             LibHelperWithVSTO.AddParagraph(myApp, myDoc, ref missing, p_content);
         }
 
-        protected Dictionary<string, int> mFigureCrossReferenceItems = new Dictionary<string, int>();
-        protected Dictionary<string, int> mTableCrossReferenceItems = new Dictionary<string, int>();
+        private Dictionary<string, int> mFigureCrossReferenceItems = new Dictionary<string, int>();
+        private Dictionary<string, int> mTableCrossReferenceItems = new Dictionary<string, int>();
 
-        protected void GenerateFigure(Word.Application myApp, Word.Document myDoc, ref object missing, ReportFigure figure)
+        private void GenerateFigure(Word.Application myApp, Word.Document myDoc, ref object missing, ReportFigure figure)
         {
             string figure_filename = figure.FileName;
             string figure_filepath = GetImageFullPath(figure_filename);
@@ -302,7 +302,7 @@ namespace LargeDocWriter
             }
         }
 
-        protected void GenerateFigure_ColumnChart(Word.Application myApp, Word.Document myDoc, ref object missing, ReportFigure_ColumnChart figure)
+        private void GenerateFigure_ColumnChart(Word.Application myApp, Word.Document myDoc, ref object missing, ReportFigure_ColumnChart figure)
         {
             string figure_caption = figure.Caption;
 
@@ -380,7 +380,7 @@ namespace LargeDocWriter
             mFigureCrossReferenceItems[figure.Tag] = arr.GetUpperBound(0);
         }
 
-        protected void GenerateFigure_BarChart(Word.Application myApp, Word.Document myDoc, ref object missing, ReportFigure_BarChart figure)
+        private void GenerateFigure_BarChart(Word.Application myApp, Word.Document myDoc, ref object missing, ReportFigure_BarChart figure)
         {
             string figure_caption = figure.Caption;
 
@@ -455,7 +455,7 @@ namespace LargeDocWriter
             mFigureCrossReferenceItems[figure.Tag] = arr.GetUpperBound(0);
         }
 
-        protected void GenerateFigure_PieChart(Word.Application myApp, Word.Document myDoc, ref object missing, ReportFigure_PieChart figure)
+        private void GenerateFigure_PieChart(Word.Application myApp, Word.Document myDoc, ref object missing, ReportFigure_PieChart figure)
         {
             string figure_caption = figure.Caption;
 
@@ -525,7 +525,7 @@ namespace LargeDocWriter
             mFigureCrossReferenceItems[figure.Tag] = arr.GetUpperBound(0);
         }
 
-        protected void GenerateFigure(Word.Application myApp, Word.Document myDoc, ref object missing, ReportFigure figure, string figure_filepath)
+        private void GenerateFigure(Word.Application myApp, Word.Document myDoc, ref object missing, ReportFigure figure, string figure_filepath)
         {
             string figure_caption = figure.Caption;
 
@@ -545,7 +545,7 @@ namespace LargeDocWriter
             mFigureCrossReferenceItems[figure.Tag] = arr.GetUpperBound(0);
         }
 
-        protected void GenerateTable(Word.Application myApp, Word.Document myDoc, ref object missing, ReportTable table)
+        private void GenerateTable(Word.Application myApp, Word.Document myDoc, ref object missing, ReportTable table)
         {
             DateTime ticked_time = DateTime.Now;
             DateTime interval_time = DateTime.Now;
@@ -567,7 +567,7 @@ namespace LargeDocWriter
             mTableCrossReferenceItems[table.Tag] = arr.GetUpperBound(0);
         }
 
-        protected void AddHeading(Word.Application myApp, Word.Document myDoc, ref object missing, ReportHeader header)
+        private void AddHeading(Word.Application myApp, Word.Document myDoc, ref object missing, ReportHeader header)
         {
             int level = header.Level;
             if (level == 1)
@@ -588,12 +588,12 @@ namespace LargeDocWriter
             }
         }
 
-        public string GetImageFullPath(string image_filename)
+        private string GetImageFullPath(string image_filename)
         {
             return Path.Combine(mContentFolderPath, image_filename);
         }
 
-        public void AddHeading1(Word.Application myApp, Word.Document myDoc, ref object missing, string content)
+        private void AddHeading1(Word.Application myApp, Word.Document myDoc, ref object missing, string content)
         {
             //Console.WriteLine("AddHeading1: {0}", content);
             mSectionIndex++;
@@ -603,7 +603,7 @@ namespace LargeDocWriter
             LibHelperWithVSTO.AddHeading1(myApp, myDoc, ref missing, content, mGenerateSectionNumber, mSectionIndex);
         }
 
-        public void AddHeading2(Word.Application myApp, Word.Document myDoc, ref object missing, string content)
+        private void AddHeading2(Word.Application myApp, Word.Document myDoc, ref object missing, string content)
         {
             mSubSectionIndex++;
             //Console.WriteLine("AddHeading2: {0}", content);
@@ -612,14 +612,14 @@ namespace LargeDocWriter
             LibHelperWithVSTO.AddHeading2(myApp, myDoc, ref missing, content, mGenerateSectionNumber, mSectionIndex, mSubSectionIndex);
         }
 
-        public void AddHeading3(Word.Application myApp, Word.Document myDoc, ref object missing, string content)
+        private void AddHeading3(Word.Application myApp, Word.Document myDoc, ref object missing, string content)
         {
             mSubSubSectionIndex++;
             mSubSubSubSectionIndex = 0;
             LibHelperWithVSTO.AddHeading3(myApp, myDoc, ref missing, content, mGenerateSectionNumber, mSectionIndex, mSubSectionIndex, mSubSubSectionIndex);
         }
 
-        public void AddHeading4(Word.Application myApp, Word.Document myDoc, ref object missing, string content)
+        private void AddHeading4(Word.Application myApp, Word.Document myDoc, ref object missing, string content)
         {
             mSubSubSubSectionIndex++;
             if (mGenerateSectionNumber)
