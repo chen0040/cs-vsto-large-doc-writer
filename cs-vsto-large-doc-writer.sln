@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cs-vsto-large-doc-writer", "cs-vsto-large-doc-writer\cs-vsto-large-doc-writer.csproj", "{6B3501C3-C259-4240-BCF7-A90B1F24B545}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cs-vsto-large-doc-writer-unit-test", "cs-vsto-large-doc-writer-unit-test\cs-vsto-large-doc-writer-unit-test.csproj", "{C10C8139-D45D-44F4-AF92-B73B9488669B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{6B3501C3-C259-4240-BCF7-A90B1F24B545}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B3501C3-C259-4240-BCF7-A90B1F24B545}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B3501C3-C259-4240-BCF7-A90B1F24B545}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C10C8139-D45D-44F4-AF92-B73B9488669B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C10C8139-D45D-44F4-AF92-B73B9488669B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C10C8139-D45D-44F4-AF92-B73B9488669B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C10C8139-D45D-44F4-AF92-B73B9488669B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
